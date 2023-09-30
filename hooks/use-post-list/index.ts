@@ -1,27 +1,23 @@
-import { CONTENTFUL_TYPES } from "@/data/constants/contentful";
-import { useCallback, useEffect, useState } from "react";
-import client from "@/services/contentful";
+import { QUERY_KEYS } from "@/data/constants/contentful";
+import { PostType } from "@/services/index.types";
+import getPostList from "@/services/post-list";
+import { useQuery } from "react-query";
 
-const usePostList = () => {
-    const [data, setData] = useState<any[] | undefined>();
-
-    const getContentList = useCallback(async () => {
-        try {
-            const entries = await client.getEntries({
-                content_type: CONTENTFUL_TYPES.POST,
-            });
-
-            setData(entries.items);
-        } catch (error) {
-            console.log(`Error fetching posts ${error}`);
-        }
-    }, [])
-
-    useEffect(() => {
-        getContentList();
-    }, [getContentList])
-
-    return { data };
-};
+const usePostList = () => useQuery({
+    queryKey: [QUERY_KEYS.POSTLIST],
+    queryFn: () => getPostList(),
+    select: data => data.map((post: any) => ({
+        id: post.sys.id,
+        title: post.title,
+        author: {
+            name: data.author.name,
+            avatar: {
+                url: data.author.avatar.url,
+                description: data.author.avatar.description
+            }
+        },
+        publishedDate: post.publishedDate
+    } as PostType)),
+});
 
 export default usePostList;
