@@ -10,10 +10,10 @@ const usePostList = () => useQuery({
         id: post.sys.id,
         title: post.title,
         author: {
-            name: data.author.name,
+            name: post.author.name,
             avatar: {
-                url: data.author.avatar.url,
-                description: data.author.avatar.description
+                url: post.author.avatar.url,
+                description: post.author.avatar.description
             }
         },
         publishedDate: post.publishedDate
