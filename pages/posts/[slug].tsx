@@ -1,3 +1,4 @@
+import Avatar from "@/components/avatar";
 import PostBody from "@/components/post-body";
 import usePost from "@/hooks/use-post";
 import { useRouter } from "next/router";
@@ -9,7 +10,7 @@ export default function Post() {
     {isLoading && <div>Loading...</div>}
     {!isLoading && post &&
       <div>
-        <img src={post.author.avatar.url} alt={post.author.avatar.description} />
+        <Avatar src={post.author.avatar.url} alt={post.author.avatar.description}/>
         <PostBody key={post.id} content={post.content}></PostBody>
       </div>}
   </>
