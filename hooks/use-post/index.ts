@@ -1,23 +1,24 @@
-import client from "@/services/contentful";
-import { useCallback, useEffect, useState } from "react";
+import { QUERY_KEYS } from "@/data/constants/contentful";
+import { PostType } from "@/services/index.types";
+import getPost from "@/services/post";
+import { useQuery } from "react-query";
 
-const usePost = (id: string) => {
-    const [data, setData] = useState<any | undefined>();
-
-    const getContent = useCallback(async () => {
-        try {
-            const entries = await client.getEntry(id, { include: 1 });
-            setData(entries);
-        } catch (error) {
-            console.log(`Error fetching posts ${error}`);
-        }
-    }, [id])
-
-    useEffect(() => {
-        getContent();
-    }, [id, getContent])
-
-    return { data };
-};
+const usePost = (id: string) => useQuery({
+    queryKey: [QUERY_KEYS.POST],
+    queryFn: () => getPost(id),
+    select: data => ({
+        id: data.sys.id,
+        title: data.title,
+        author: {
+            name: data.author.name,
+            avatar: {
+                url: data.author.avatar.url,
+                description: data.author.avatar.description
+            }
+        },
+        content: data.content.json,
+        publishedDate: data.publishedDate
+    } as PostType),
+});
 
 export default usePost;

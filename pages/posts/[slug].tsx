@@ -4,9 +4,13 @@ import { useRouter } from "next/router";
 
 export default function Post() {
   const router = useRouter();
-  const { data: post } = usePost(router.query.slug as string);
+  const { data: post, isLoading } = usePost(router.query.slug as string);
   return <>
-    {router.isFallback && <div>Loading...</div>}
-    {post && <PostBody key={post.fields.title} content={post.fields.content}></PostBody>}
+    {isLoading && <div>Loading...</div>}
+    {!isLoading && post &&
+      <div>
+        <img src={post.author.avatar.url} alt={post.author.avatar.description} />
+        <PostBody key={post.id} content={post.content}></PostBody>
+      </div>}
   </>
 }

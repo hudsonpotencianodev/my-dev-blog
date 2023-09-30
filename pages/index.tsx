@@ -6,11 +6,11 @@ export default function Home() {
 
   return (
     <>
-      {data && data.map(d => <Link key={d.sys.id}
+      {data && data.map((d:any) => <Link key={d.id}
         href={{
           pathname: '/posts/[slug]',
-          query: { slug: encodeURIComponent(d.sys.id) },
-        }}>{d.fields.title}</Link>)}
+          query: { slug: encodeURIComponent(d.id) },
+        }}>{d.title ?? ''}</Link>)}
     </>
   )
 }
