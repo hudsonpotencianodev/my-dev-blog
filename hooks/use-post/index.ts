@@ -1,11 +1,12 @@
 import { QUERY_KEYS } from "@/data/constants/contentful";
 import { PostType } from "@/services/index.types";
 import getPost from "@/services/post";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const usePost = (id: string) => useQuery({
-    queryKey: [QUERY_KEYS.POST],
+    queryKey: [QUERY_KEYS.POST, id],
     queryFn: () => getPost(id),
+    enabled: !!id,
     select: data => ({
         id: data.sys.id,
         title: data.title,

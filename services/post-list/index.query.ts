@@ -3,7 +3,6 @@ query {
   blogPostCollection {
     total
     skip
-    skip
     limit
     items {
       sys {
