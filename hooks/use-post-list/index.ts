@@ -1,7 +1,7 @@
 import { QUERY_KEYS } from "@/data/constants/contentful";
 import { PostType } from "@/services/index.types";
 import getPostList from "@/services/post-list";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const usePostList = () => useQuery({
     queryKey: [QUERY_KEYS.POSTLIST],

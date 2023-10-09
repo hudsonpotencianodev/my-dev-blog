@@ -1,8 +1,8 @@
 import Layout from '@/components/layout'
 import '@/styles/global.scss'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
 import { Poppins } from 'next/font/google'
-import { QueryClient, QueryClientProvider } from 'react-query'
 const poppins = Poppins({ weight: ['500'], subsets: ['latin'] })
 const queryClient = new QueryClient();
 

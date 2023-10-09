@@ -1,3 +1,4 @@
+import React from 'react';
 import Avatar from "@/components/avatar";
 import PostBody from "@/components/post-body";
 import usePost from "@/hooks/use-post";
