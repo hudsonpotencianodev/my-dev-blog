@@ -1,17 +1,13 @@
 {
-  "plugins": [
-    "react-hooks",
-    "react",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react-hooks", "react", "@typescript-eslint"],
   "extends": [
     "next/core-web-vitals",
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  
+
   "rules": {
-    "react/react-in-jsx-scope":"off"
+    "react/react-in-jsx-scope": "off"
   }
 }
