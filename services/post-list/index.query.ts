@@ -1,4 +1,4 @@
-const postListQuery = ()=> `
+const postListQuery = () => `
 query {
   blogPostCollection {
     total

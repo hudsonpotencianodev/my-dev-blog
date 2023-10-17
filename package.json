@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier-format": "prettier --config .prettierrc . --write"
+    "prettier-format": "prettier --config .prettierrc . --write",
+    "prepare": "husky install",
+    "stylelint": "npx stylelint **/*.scss --allow-empty-input"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.17.2",
@@ -26,18 +28,18 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "@testing-library/react": "^14.0.0",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
-    "prettier": "^3.0.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx prettier . --write && npm run lint",
-      "pre-push": "",
-      "...": "..."
-    }
+    "husky": "^8.0.0",
+    "prettier": "^3.0.3",
+    "react-test-renderer": "^18.2.0",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^11.0.0"
   }
 }

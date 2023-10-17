@@ -1,9 +1,9 @@
 export const CONTENTFUL_TYPES = {
-    POST: 'blogPost',
-    AUTHOR: 'Author'
-}
+  POST: 'blogPost',
+  AUTHOR: 'Author'
+};
 
 export const QUERY_KEYS = {
-    POST: 'post',
-    POSTLIST: 'postList'
-}
+  POST: 'post',
+  POSTLIST: 'postList'
+};

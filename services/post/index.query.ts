@@ -1,4 +1,4 @@
-const postQuery = (id:string)=> `
+const postQuery = (id: string) => `
 query {
     blogPost(id: "${id}") {
       sys {
